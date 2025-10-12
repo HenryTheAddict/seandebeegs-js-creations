@@ -271,4 +271,4 @@ function restoreInitialPage(){
   document.querySelector('.results').innerHTML = '';
   document.querySelector('.deck').innerHTML = '';
 }
-}
+
