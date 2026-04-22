@@ -9,11 +9,24 @@
 </head>
 <body>
   <div id="ui-top">
-    <h1>The Pregnancy Game</h1>
+    <h1 id="title">The Pregnancy Game</h1>
     <div id="stats">
       <div class="stat-pill" id="week-display">Week <span id="week">1</span></div>
       <div class="stat-pill" id="mood-display">Mood: <span id="mood">😊</span></div>
       <div class="stat-pill" id="score-display">Score: <span id="score">0</span></div>
+    </div>
+    <div id="mode-strip">
+      <button id="btn-mode-normal" class="mode-btn active" onclick="setMode('normal')">👩 Normal</button>
+      <button id="btn-mode-sean"   class="mode-btn"        onclick="setMode('sean')">👨 Sean Mode</button>
+      <div id="color-swatches">
+        <span class="swatch-label">Skin:</span>
+        <button class="swatch" style="background:#ffd5b0" onclick="setSkin(0)" title="Light"></button>
+        <button class="swatch" style="background:#f0b888" onclick="setSkin(1)" title="Medium Light"></button>
+        <button class="swatch" style="background:#d4895a" onclick="setSkin(2)" title="Medium"></button>
+        <button class="swatch" style="background:#a0522d" onclick="setSkin(3)" title="Medium Dark"></button>
+        <button class="swatch" style="background:#6b3a1f" onclick="setSkin(4)" title="Dark"></button>
+        <button class="swatch rainbow" onclick="setSkin(5)" title="Rainbow 🌈">🌈</button>
+      </div>
     </div>
   </div>
 
@@ -27,7 +40,7 @@
   <div id="ui-bottom">
     <div id="meters">
       <div class="meter-wrap">
-        <span class="meter-label">Hunger</span>
+        <span class="meter-label" id="label-hunger">Hunger</span>
         <div class="meter-bar"><div class="meter-fill" id="hunger-bar"></div></div>
       </div>
       <div class="meter-wrap">
@@ -35,19 +48,18 @@
         <div class="meter-bar"><div class="meter-fill green" id="happy-bar"></div></div>
       </div>
       <div class="meter-wrap">
-        <span class="meter-label">Baby Activity</span>
+        <span class="meter-label" id="label-baby">Baby Activity</span>
         <div class="meter-bar"><div class="meter-fill purple" id="baby-bar"></div></div>
       </div>
     </div>
     <div id="actions">
-      <button class="action-btn" id="btn-pat" onclick="game.pat()">Pat Belly 🤲</button>
+      <button class="action-btn" id="btn-pat"  onclick="game.pat()">Pat Belly 🤲</button>
       <button class="action-btn" id="btn-sing" onclick="game.sing()">Sing to Baby 🎵</button>
       <button class="action-btn" id="btn-rest" onclick="game.rest()">Rest 😴</button>
     </div>
   </div>
 
   <div id="log"></div>
-
   <script src="pregnancy.js"></script>
 </body>
 </html>

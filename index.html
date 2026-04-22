@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sean de beeg's Creations</title>
+  <link rel="stylesheet" href="h3.css">
+  <style>
+    body {
+      min-height: 100vh;
+      padding: 48px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 72px);
+      background: linear-gradient(135deg, var(--h3-blue-400) 0%, var(--h3-magenta) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--fg-3);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .orb-accent {
+      width: 80px; height: 80px;
+      margin: 0 auto 24px;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .game-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius-3);
+      border: 1px solid rgba(255,255,255,0.9);
+      box-shadow: var(--shadow-card);
+      padding: 24px 20px 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform var(--dur-fast) var(--ease-bounce),
+                  box-shadow var(--dur-fast) var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-accent, var(--grad-deep));
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: var(--shadow-drop-lg);
+      text-decoration: none;
+    }
+
+    .game-card:active { transform: scale(0.98); }
+
+    .game-icon { font-size: 40px; line-height: 1; }
+
+    .game-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--fg-1);
+      letter-spacing: -0.01em;
+    }
+
+    .game-desc {
+      font-size: 13px;
+      color: var(--fg-3);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .game-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      align-self: flex-start;
+    }
+
+    .tag-game    { background: rgba(0,116,224,0.12); color: var(--h3-blue-500); }
+    .tag-new     { background: linear-gradient(135deg,var(--h3-magenta),var(--h3-orange)); color: #fff; }
+    .tag-cards   { background: rgba(0,128,38,0.12);  color: var(--h3-green); }
+    .tag-word    { background: rgba(255,140,0,0.12); color: var(--h3-orange); }
+    .tag-ai      { background: rgba(212,0,255,0.12); color: var(--h3-magenta); }
+    .tag-physics { background: rgba(255,237,0,0.15); color: #b89000; }
+    .tag-stats   { background: rgba(0,0,0,0.07);     color: var(--fg-3); }
+
+    footer {
+      margin-top: 64px;
+      font-size: 13px;
+      font-family: var(--font-mono);
+      color: var(--fg-3);
+      text-align: center;
+    }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="orb orb-accent"></div>
+    <h1>Sean de beeg's Creations</h1>
+    <p>All the JS games, unfinished and finished, styled with the h3 design system.</p>
+  </div>
+
+  <div class="games-grid">
+
+    <a class="game-card" href="tic-tac-toe/tic-tac-toe.html" style="--card-accent: linear-gradient(90deg,#0074e0,#004cff)">
+      <div class="game-icon">⭕</div>
+      <div class="game-name">Tic-Tac-Toe</div>
+      <p class="game-desc">Classic X vs O. Play against a friend or let the computer make random moves. Tracks wins, losses, and ties.</p>
+      <span class="game-tag tag-game">Game</span>
+    </a>
+
+    <a class="game-card" href="calculator/calculator.html" style="--card-accent: linear-gradient(90deg,#009dff,#003d99)">
+      <div class="game-icon">🧮</div>
+      <div class="game-name">Calculator</div>
+      <p class="game-desc">Full-featured calculator with operations, powers, square roots, and parentheses. Glossy orb buttons.</p>
+      <span class="game-tag tag-game">Tool</span>
+    </a>
+
+    <a class="game-card" href="blackJack/blackJack.html" style="--card-accent: linear-gradient(90deg,#1ea831,#0e6b1c)">
+      <div class="game-icon">🃏</div>
+      <div class="game-name">Black Jack</div>
+      <p class="game-desc">Multiplayer blackjack for 2–5 players. Green felt table. Deal, flip, and see who busts.</p>
+      <span class="game-tag tag-cards">Cards</span>
+    </a>
+
+    <a class="game-card" href="hangman/hagman.html" style="--card-accent: linear-gradient(90deg,#ff8c00,#e40303)">
+      <div class="game-icon">🪢</div>
+      <div class="game-name">Hangman</div>
+      <p class="game-desc">Guess the hidden word one letter at a time before you run out of chances. Tracks your record.</p>
+      <span class="game-tag tag-word">Word</span>
+    </a>
+
+    <a class="game-card" href="rockPaperScissors/better-rps.html" style="--card-accent: linear-gradient(90deg,#ffb347,#ff8c00)">
+      <div class="game-icon">✊</div>
+      <div class="game-name">Rock Paper Scissors</div>
+      <p class="game-desc">You vs the computer. Best-of series tracking. May the better hand win.</p>
+      <span class="game-tag tag-game">Game</span>
+    </a>
+
+    <a class="game-card" href="war/war.html" style="--card-accent: linear-gradient(90deg,#1ea831,#0e6b1c)">
+      <div class="game-icon">⚔️</div>
+      <div class="game-name">War</div>
+      <p class="game-desc">The card game of War for up to 5 players. Flip cards, highest wins the pile.</p>
+      <span class="game-tag tag-cards">Cards</span>
+    </a>
+
+    <a class="game-card" href="phone-guess/index.html" style="--card-accent: linear-gradient(90deg,#838dff,#d400ff)">
+      <div class="game-icon">📱</div>
+      <div class="game-name">Phone Guess</div>
+      <p class="game-desc">Guess the mystery phone from its specs. How well do you know your devices?</p>
+      <span class="game-tag tag-game">Trivia</span>
+    </a>
+
+    <a class="game-card" href="gameStats/gameStats.html" style="--card-accent: linear-gradient(90deg,#9a9ba3,#555860)">
+      <div class="game-icon">📊</div>
+      <div class="game-name">Game Stats</div>
+      <p class="game-desc">View and reset your saved win/loss records across all games in one place.</p>
+      <span class="game-tag tag-stats">Stats</span>
+    </a>
+
+    <a class="game-card" href="pregnancy/pregnancy.html" style="--card-accent: linear-gradient(90deg,#ff80bf,#d400ff)">
+      <div class="game-icon">🤰</div>
+      <div class="game-name">The Pregnancy Game</div>
+      <p class="game-desc">Jiggle-physics soft-body belly simulator. Eat cravings, feel kicks, survive 40 weeks. Sean Mode available.</p>
+      <span class="game-tag tag-new">New ✨</span>
+    </a>
+
+    <a class="game-card" href="google-giggle/google-giggle.html" style="--card-accent: linear-gradient(90deg,#4285f4,#ea4335,#fbbc05,#34a853)">
+      <div class="game-icon">🔍</div>
+      <div class="game-name">Google Giggle</div>
+      <p class="game-desc">Upload any image and Google's AI labels it with 100% real, very accurate results. Totally not random.</p>
+      <span class="game-tag tag-ai">AI 🤖</span>
+    </a>
+
+  </div>
+
+  <footer>
+    Made by <a href="https://github.com/seandebeeg">seandebeeg</a> · styled with the h3 design system
+  </footer>
+
+</body>
+</html>
