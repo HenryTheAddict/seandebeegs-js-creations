@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Giggle</title>
+  <link rel="stylesheet" href="../h3.css">
+  <link rel="stylesheet" href="google-giggle.css">
+</head>
+<body>
+  <header>
+    <div id="logo">
+      <span class="g g1">G</span><span class="g g2">o</span><span class="g g3">o</span><span class="g g4">g</span><span class="g g5">l</span><span class="g g6">e</span>
+      <span id="giggle-word">Giggle</span>
+    </div>
+    <div id="search-bar-wrap">
+      <div id="search-bar">
+        <span id="search-icon">🔍</span>
+        <input id="search-input" type="text" placeholder="Search the giggle..." autocomplete="off" spellcheck="false">
+        <button id="btn-search" onclick="fakeSearch()">Giggle Search</button>
+      </div>
+    </div>
+    <div id="score-bar">
+      <span>Giggle Score:</span>
+      <span id="giggle-score">0</span>
+      <span>pts</span>
+      <span id="result-count"></span>
+    </div>
+  </header>
+
+  <main>
+    <div id="drop-zone" ondragover="event.preventDefault()" ondrop="handleDrop(event)">
+      <input type="file" id="file-input" accept="image/*" multiple onchange="handleFiles(this.files)">
+      <div id="drop-inner">
+        <div id="drop-icon">📎</div>
+        <p>Drop images here or <label for="file-input" id="browse-label">browse files</label></p>
+        <p class="caption">Google's AI will analyze them with 100% real accuracy</p>
+      </div>
+    </div>
+
+    <div id="results-grid"></div>
+  </main>
+
+  <div id="analysis-modal" onclick="closeModal()">
+    <div id="modal-inner" onclick="event.stopPropagation()">
+      <button id="modal-close" onclick="closeModal()">✕</button>
+      <img id="modal-img" src="" alt="">
+      <div id="modal-labels"></div>
+      <div id="modal-footer">
+        <span id="modal-score-text"></span>
+        <button class="action-btn" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="google-giggle.js"></script>
+</body>
+</html>
