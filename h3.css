@@ -1,0 +1,172 @@
+/* h3 design system — Frutiger Aero / Metro / Wii-inspired */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Google+Sans:wght@400;500;700&display=swap');
+
+:root {
+  --h3-blue-50:  #e6f5ff;
+  --h3-blue-100: #b3e2ff;
+  --h3-blue-200: #00b3ff;
+  --h3-blue-300: #0088ff;
+  --h3-blue-400: #0074e0;
+  --h3-blue-500: #004cff;
+  --h3-blue-600: #003d99;
+  --h3-blue-700: #2d4891;
+  --h3-cyan:     #00bbff;
+  --h3-aqua:     #00ffc3;
+  --h3-sky:      #009dff;
+  --h3-lavender: #838dff;
+  --h3-red:      #e40303;
+  --h3-orange:   #ff8c00;
+  --h3-yellow:   #ffed00;
+  --h3-green:    #008026;
+  --h3-lime:     #00e01e;
+  --h3-magenta:  #d400ff;
+  --h3-pink:     #ff00fb;
+  --h3-black:    #000000;
+  --h3-white:    #ffffff;
+  --h3-ink-900:  #0b0b10;
+  --h3-ink-700:  #1e1f26;
+  --h3-ink-500:  #555860;
+  --h3-ink-300:  #9a9ba3;
+  --h3-ink-100:  #e6e7ec;
+  --h3-ink-50:   #f4f5f8;
+  --h3-gray:     #d9d9d9;
+
+  --fg-1: var(--h3-ink-900);
+  --fg-2: var(--h3-ink-700);
+  --fg-3: var(--h3-ink-500);
+  --fg-inverse: var(--h3-white);
+  --bg-1: var(--h3-white);
+  --bg-2: var(--h3-ink-50);
+  --bg-3: var(--h3-ink-100);
+  --accent: var(--h3-blue-400);
+  --accent-hover: var(--h3-blue-500);
+  --accent-active: var(--h3-blue-600);
+
+  --grad-sky:    linear-gradient(180deg, var(--h3-cyan) 0%, var(--h3-white) 100%);
+  --grad-bubble: linear-gradient(180deg, var(--h3-aqua) 0%, var(--h3-lavender) 100%);
+  --grad-deep:   linear-gradient(180deg, var(--h3-sky) 0%, var(--h3-blue-600) 100%);
+  --gloss-top:   linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 55%);
+
+  --shadow-drop:    0 4px 4px 0 rgba(0,0,0,0.25);
+  --shadow-drop-lg: 3px 8px 12px 0 rgba(0,0,0,0.25);
+  --shadow-card:    0 2px 12px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08);
+
+  --radius-1: 6px;
+  --radius-2: 12px;
+  --radius-3: 20px;
+  --radius-4: 28px;
+  --radius-pill: 999px;
+
+  --font-display: 'Lora', 'Georgia', serif;
+  --font-body: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Menlo', monospace;
+
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 120ms;
+  --dur-med: 220ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--fg-1);
+  background: var(--grad-sky);
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  color: var(--fg-1);
+}
+
+/* Glossy pill button */
+.h3-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: var(--grad-deep);
+  color: var(--fg-inverse);
+  box-shadow: var(--shadow-drop), inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
+  user-select: none;
+}
+.h3-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--gloss-top);
+  pointer-events: none;
+}
+.h3-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-drop-lg), inset 0 1px 0 rgba(255,255,255,0.3); }
+.h3-btn:active { transform: scale(0.97) translateY(0); box-shadow: var(--shadow-drop); }
+
+/* Ghost pill button */
+.h3-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 20px;
+  border: 2px solid rgba(0,116,224,0.4);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  color: var(--accent);
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  user-select: none;
+}
+.h3-btn-ghost:hover { background: rgba(230,245,255,0.9); border-color: var(--accent); }
+.h3-btn-ghost:active { transform: scale(0.97); }
+
+/* Card surface */
+.h3-card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-3);
+  border: 1px solid rgba(255,255,255,0.8);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+}
+
+/* Orb */
+.orb {
+  border-radius: 50%;
+  background: var(--grad-bubble);
+  box-shadow: var(--shadow-drop-lg);
+  position: relative;
+  overflow: hidden;
+}
+.orb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--gloss-top);
+  pointer-events: none;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Grand Gestation Spectacular</title>
+  <link rel="stylesheet" href="../h3.css">
+  <link rel="stylesheet" href="gestation.css">
+</head>
+<body>
+  <div id="ui-top">
+    <h1 id="title">The Grand Gestation Spectacular</h1>
+    <div id="stats">
+      <div class="stat-pill" id="week-display">Gestational Week <span id="week">I</span></div>
+      <div class="stat-pill" id="mood-display">Disposition: <span id="mood">😊</span></div>
+      <div class="stat-pill" id="score-display">Magnificence: <span id="score">0</span></div>
+    </div>
+    <div id="mode-strip">
+      <button id="btn-mode-normal" class="mode-btn active" onclick="setMode('normal')">👩 Gravid Mode</button>
+      <button id="btn-mode-sean"   class="mode-btn"        onclick="setMode('sean')">👨 Sean Mode</button>
+      <div id="color-swatches">
+        <span class="swatch-label">Skin:</span>
+        <button class="swatch" style="background:#ffd5b0" onclick="setSkin(0)" title="Light"></button>
+        <button class="swatch" style="background:#f0b888" onclick="setSkin(1)" title="Medium Light"></button>
+        <button class="swatch" style="background:#d4895a" onclick="setSkin(2)" title="Medium"></button>
+        <button class="swatch" style="background:#a0522d" onclick="setSkin(3)" title="Medium Dark"></button>
+        <button class="swatch" style="background:#6b3a1f" onclick="setSkin(4)" title="Dark"></button>
+        <button class="swatch rainbow" onclick="setSkin(5)" title="Rainbow 🌈">🌈</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="scene">
+    <canvas id="canvas"></canvas>
+    <div id="craving-zone"></div>
+    <div id="kick-flash"></div>
+    <div id="thought-bubble"></div>
+  </div>
+
+  <div id="ui-bottom">
+    <div id="meters">
+      <div class="meter-wrap">
+        <span class="meter-label" id="label-hunger">Alimentary Status</span>
+        <div class="meter-bar"><div class="meter-fill" id="hunger-bar"></div></div>
+      </div>
+      <div class="meter-wrap">
+        <span class="meter-label">Emotional Equilibrium</span>
+        <div class="meter-bar"><div class="meter-fill green" id="happy-bar"></div></div>
+      </div>
+      <div class="meter-wrap">
+        <span class="meter-label" id="label-baby">Fetal Exuberance</span>
+        <div class="meter-bar"><div class="meter-fill purple" id="baby-bar"></div></div>
+      </div>
+    </div>
+    <div id="actions">
+      <button class="action-btn" id="btn-pat"  onclick="game.pat()">Percuss the Dome 🤲</button>
+      <button class="action-btn" id="btn-sing" onclick="game.sing()">Serenade the Nascent Being 🎵</button>
+      <button class="action-btn" id="btn-rest" onclick="game.rest()">Convalesce 😴</button>
+    </div>
+  </div>
+
+  <div id="log"></div>
+  <script src="gestation.js"></script>
+</body>
+</html>
