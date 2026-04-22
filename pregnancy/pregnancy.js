@@ -1,6 +1,14 @@
 /* =====================================================================
-   The Pregnancy Game — jiggle physics + Sean Mode + color picker
+   The Grand Gestation Spectacular — jiggle physics + Sean Mode + color picker
    ===================================================================== */
+
+function toRoman(n) {
+  const vals = [40,10,9,5,4,1];
+  const syms = ['XL','X','IX','V','IV','I'];
+  let r = '';
+  for (let i = 0; i < vals.length; i++) { while (n >= vals[i]) { r += syms[i]; n -= vals[i]; } }
+  return r;
+}
 
 const canvas = document.getElementById('canvas');
 const ctx    = canvas.getContext('2d');
@@ -39,63 +47,63 @@ let currentMode = 'normal'; // 'normal' | 'sean'
 
 const MODES = {
   normal: {
-    title: 'The Pregnancy Game',
-    weekLabel: 'Week',
-    actionLabels: ['Pat Belly 🤲', 'Sing to Baby 🎵', 'Rest 😴'],
-    hungerLabel: 'Hunger',
-    babyLabel: 'Baby Activity',
+    title: 'The Grand Gestation Spectacular',
+    weekLabel: 'Gestational Week',
+    actionLabels: ['Percuss the Dome 🤲', 'Serenade the Nascent Being 🎵', 'Convalesce 😴'],
+    hungerLabel: 'Alimentary Status',
+    babyLabel: 'Fetal Exuberance',
     cravings: [
-      { emoji: '🍕', name: 'Pizza',      yum: 20 },
-      { emoji: '🍦', name: 'Ice Cream',  yum: 22 },
-      { emoji: '🥒', name: 'Pickles',    yum: 15 },
-      { emoji: '🍫', name: 'Chocolate',  yum: 18 },
-      { emoji: '🍟', name: 'Fries',      yum: 16 },
-      { emoji: '🍰', name: 'Cake',       yum: 25 },
-      { emoji: '🍓', name: 'Strawberry', yum: 14 },
-      { emoji: '🧀', name: 'Cheese',     yum: 12 },
-      { emoji: '🍌', name: 'Banana',     yum: 11 },
-      { emoji: '🌮', name: 'Taco',       yum: 19 },
+      { emoji: '🍕', name: 'Flatbread Medallion',          yum: 20 },
+      { emoji: '🍦', name: 'Frozen Lactose Confection',    yum: 22 },
+      { emoji: '🥒', name: 'Brined Cucurbit',              yum: 15 },
+      { emoji: '🍫', name: 'Cacao Slab',                   yum: 18 },
+      { emoji: '🍟', name: 'Auric Potato Batons',          yum: 16 },
+      { emoji: '🍰', name: 'Stratified Confection',        yum: 25 },
+      { emoji: '🍓', name: 'Sanguine Berry',               yum: 14 },
+      { emoji: '🧀', name: 'Aged Milk Solids',             yum: 12 },
+      { emoji: '🍌', name: 'Elongated Tropical Drupe',     yum: 11 },
+      { emoji: '🌮', name: 'Folded Maize Vessel',          yum: 19 },
     ],
-    thoughts: ['💭 Kick!', '💭 Hungry!', '💭 Sleepy…', '💭 🎵', '💭 Gotta pee', '💭 Pickles??'],
+    thoughts: ['💭 Percussive event!', '💭 Alimentary deficit!', '💭 Soporific compulsion…', '💭 Melodic yearning 🎵', '💭 Urinary urgency!', '💭 Brined cucurbits??'],
     logs: {
-      kick: '👟 Baby kicked!',
-      pat:  '🤲 Patted the belly! Baby loves it.',
-      sing: '🎵 Sang a lullaby! Score +15',
-      rest: '😴 Rested. Feeling better!',
-      miss: '😤 Missed a craving!',
-      init: ['👶 Pregnancy begins! Week 1...', 'Click the belly to feel the baby! Eat the cravings! 🍕'],
-      weekMsg: (w) => `📅 Week ${w} — baby is growing!`,
-      done: (s) => `🎉 40 weeks! It's time! Final score: ${s}`,
+      kick: '👟 The nascent sovereign delivered an intrauterine percussive salvo!',
+      pat:  '🤲 Tactile communion with the gestational protuberance — the fetal denizen approves.',
+      sing: '🎵 Melodic serenade transmitted to the gestating denizen! +15 Magnificence.',
+      rest: '😴 Convalescence achieved. Equilibrium restored.',
+      miss: '😤 A gustatory compulsion went entirely unsatisfied!',
+      init: ['👶 The Grand Gestation commences! Gestational Week the First...', 'Apply digital pressure to the gravid abdomen to commune with the nascent being! Satisfy gustatory compulsions! 🍕'],
+      weekMsg: (w) => `📅 Gestational Week ${w} — the fetal denizen grows resplendent!`,
+      done: (s) => `🎉 40 gestational weeks elapsed! Parturition is imminent! Final Magnificence: ${s}`,
     },
   },
   sean: {
-    title: "Sean Mode: Sympathy Pregnancy",
-    weekLabel: 'Week of Dad Training',
-    actionLabels: ['Pat Gut 🤲', 'Watch the Game 📺', 'Nap 😴'],
-    hungerLabel: 'Hunger (Severe)',
-    babyLabel: 'Gas Activity',
+    title: "Sean Mode: Sympathetic Gestation Syndrome",
+    weekLabel: 'Week of Paternal Conditioning',
+    actionLabels: ['Percuss the Abdomen 🤲', 'Observe Athletic Proceedings 📺', 'Enter Dormancy 😴'],
+    hungerLabel: 'Alimentary Desperation',
+    babyLabel: 'Gastrointestinal Exuberance',
     cravings: [
-      { emoji: '🌭', name: 'Hot Dog',     yum: 20 },
-      { emoji: '🍕', name: 'Pizza',       yum: 25 },
-      { emoji: '🍟', name: 'Fries',       yum: 18 },
-      { emoji: '🧇', name: 'Waffles',     yum: 16 },
-      { emoji: '🥓', name: 'Bacon',       yum: 22 },
-      { emoji: '🍔', name: 'Burger',      yum: 24 },
-      { emoji: '🎮', name: 'Controller',  yum: 5  },
-      { emoji: '🧃', name: 'Juice Box',   yum: 10 },
-      { emoji: '🍪', name: 'Cookie',      yum: 14 },
-      { emoji: '🧆', name: 'Falafel',     yum: 12 },
+      { emoji: '🌭', name: 'Encased Meat Cylinder',        yum: 20 },
+      { emoji: '🍕', name: 'Flatbread Medallion',          yum: 25 },
+      { emoji: '🍟', name: 'Auric Potato Batons',          yum: 18 },
+      { emoji: '🧇', name: 'Gridded Batter Disc',          yum: 16 },
+      { emoji: '🥓', name: 'Cured Porcine Strips',         yum: 22 },
+      { emoji: '🍔', name: 'Stacked Bovine Medallion',     yum: 24 },
+      { emoji: '🎮', name: 'Digital Input Apparatus',      yum: 5  },
+      { emoji: '🧃', name: 'Pulped Fruit Receptacle',      yum: 10 },
+      { emoji: '🍪', name: 'Circular Flour Disc',          yum: 14 },
+      { emoji: '🧆', name: 'Leguminous Spheroid',          yum: 12 },
     ],
-    thoughts: ['💭 Game's on!', '💭 Is that gas?', '💭 My back hurts', '💭 Need chips', '💭 Sympathy kick??', '💭 I\'m basically pregnant'],
+    thoughts: ['💭 Athletic proceedings commence!', '💭 Gastrointestinal perturbation?', '💭 Lumbar distress detected', '💭 Require comestibles urgently', '💭 Sympathetic percussive phenomenon??', '💭 I am essentially gravid'],
     logs: {
-      kick: '💨 Sympathy kick detected (probably gas)',
-      pat:  '🤲 Patted the gut. It jiggled. Nice.',
-      sing: '📺 Watched the game. Score +15',
-      rest: '😴 Napped on the couch. Legend.',
-      miss: '😤 Missed a snack!',
-      init: ["👨 Sean Mode activated. You have sympathy pregnancy.", "Click the gut! Eat the snacks! Try not to complain! 🌭"],
-      weekMsg: (w) => `📅 Week ${w} of dad training — still waddling!`,
-      done: (s) => `🏆 40 weeks survived! You're basically a hero. Score: ${s}`,
+      kick: '💨 Sympathetic gastrointestinal percussive event detected (provenance: uncertain)',
+      pat:  '🤲 Digital percussion applied to the abdominal region. Oscillation achieved. Magnificent.',
+      sing: '📺 Athletic proceedings observed with great enthusiasm. +15 Magnificence.',
+      rest: '😴 Dormancy achieved upon the chesterfield. A legend reposes.',
+      miss: '😤 A comestible compulsion went entirely unaddressed!',
+      init: ["👨 Sean Mode engaged. Sympathetic Gestation Syndrome confirmed.", "Apply pressure to the abdomen! Acquire comestibles! Abstain from excessive lamentation! 🌭"],
+      weekMsg: (w) => `📅 Week ${w} of paternal conditioning — the waddling intensifies!`,
+      done: (s) => `🏆 40 weeks of sympathetic gestation endured! You are essentially heroic. Magnificence: ${s}`,
     },
   },
 };
@@ -556,7 +564,7 @@ const game = {
       this.hunger    = Math.min(100, this.hunger + food.yum);
       this.happiness = Math.min(100, this.happiness + food.yum*0.5);
       this.score += food.yum;
-      this.log(`😋 Ate ${food.emoji} ${food.name}! +${food.yum}`);
+      this.log(`😋 Gustatory compulsion satisfied: ${food.emoji} ${food.name}! +${food.yum} Magnificence`);
       this.showThought('😋 Yum!');
       blob.applyImpulse(blob.cx, blob.cy - blob.baseR*0.5, -8);
       this.updateUI(); setTimeout(() => el.remove(), 400);
@@ -617,8 +625,8 @@ const game = {
   },
 
   updateUI() {
-    document.getElementById('week').textContent  = this.week;
-    document.getElementById('score').textContent = this.score;
+    document.getElementById('week').textContent  = toRoman(this.week);
+    document.getElementById('score').textContent = this.score.toLocaleString();
     const moods = this.happiness > 75 ? '😄' : this.happiness > 50 ? '😊' : this.happiness > 30 ? '😐' : '😩';
     document.getElementById('mood').textContent = moods;
     document.getElementById('hunger-bar').style.width    = this.hunger + '%';

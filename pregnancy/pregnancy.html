@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Pregnancy Game</title>
+  <title>The Grand Gestation Spectacular</title>
   <link rel="stylesheet" href="../h3.css">
   <link rel="stylesheet" href="pregnancy.css">
 </head>
 <body>
   <div id="ui-top">
-    <h1 id="title">The Pregnancy Game</h1>
+    <h1 id="title">The Grand Gestation Spectacular</h1>
     <div id="stats">
-      <div class="stat-pill" id="week-display">Week <span id="week">1</span></div>
-      <div class="stat-pill" id="mood-display">Mood: <span id="mood">😊</span></div>
-      <div class="stat-pill" id="score-display">Score: <span id="score">0</span></div>
+      <div class="stat-pill" id="week-display">Gestational Week <span id="week">I</span></div>
+      <div class="stat-pill" id="mood-display">Disposition: <span id="mood">😊</span></div>
+      <div class="stat-pill" id="score-display">Magnificence: <span id="score">0</span></div>
     </div>
     <div id="mode-strip">
-      <button id="btn-mode-normal" class="mode-btn active" onclick="setMode('normal')">👩 Normal</button>
+      <button id="btn-mode-normal" class="mode-btn active" onclick="setMode('normal')">👩 Gravid Mode</button>
       <button id="btn-mode-sean"   class="mode-btn"        onclick="setMode('sean')">👨 Sean Mode</button>
       <div id="color-swatches">
         <span class="swatch-label">Skin:</span>
@@ -40,22 +40,22 @@
   <div id="ui-bottom">
     <div id="meters">
       <div class="meter-wrap">
-        <span class="meter-label" id="label-hunger">Hunger</span>
+        <span class="meter-label" id="label-hunger">Alimentary Status</span>
         <div class="meter-bar"><div class="meter-fill" id="hunger-bar"></div></div>
       </div>
       <div class="meter-wrap">
-        <span class="meter-label">Happiness</span>
+        <span class="meter-label">Emotional Equilibrium</span>
         <div class="meter-bar"><div class="meter-fill green" id="happy-bar"></div></div>
       </div>
       <div class="meter-wrap">
-        <span class="meter-label" id="label-baby">Baby Activity</span>
+        <span class="meter-label" id="label-baby">Fetal Exuberance</span>
         <div class="meter-bar"><div class="meter-fill purple" id="baby-bar"></div></div>
       </div>
     </div>
     <div id="actions">
-      <button class="action-btn" id="btn-pat"  onclick="game.pat()">Pat Belly 🤲</button>
-      <button class="action-btn" id="btn-sing" onclick="game.sing()">Sing to Baby 🎵</button>
-      <button class="action-btn" id="btn-rest" onclick="game.rest()">Rest 😴</button>
+      <button class="action-btn" id="btn-pat"  onclick="game.pat()">Percuss the Dome 🤲</button>
+      <button class="action-btn" id="btn-sing" onclick="game.sing()">Serenade the Nascent Being 🎵</button>
+      <button class="action-btn" id="btn-rest" onclick="game.rest()">Convalesce 😴</button>
     </div>
   </div>
 
