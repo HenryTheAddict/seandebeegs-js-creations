@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Pregnancy Game</title>
+  <link rel="stylesheet" href="../h3.css">
+  <link rel="stylesheet" href="pregnancy.css">
+</head>
+<body>
+  <div id="ui-top">
+    <h1>The Pregnancy Game</h1>
+    <div id="stats">
+      <div class="stat-pill" id="week-display">Week <span id="week">1</span></div>
+      <div class="stat-pill" id="mood-display">Mood: <span id="mood">😊</span></div>
+      <div class="stat-pill" id="score-display">Score: <span id="score">0</span></div>
+    </div>
+  </div>
+
+  <div id="scene">
+    <canvas id="canvas"></canvas>
+    <div id="craving-zone"></div>
+    <div id="kick-flash"></div>
+    <div id="thought-bubble"></div>
+  </div>
+
+  <div id="ui-bottom">
+    <div id="meters">
+      <div class="meter-wrap">
+        <span class="meter-label">Hunger</span>
+        <div class="meter-bar"><div class="meter-fill" id="hunger-bar"></div></div>
+      </div>
+      <div class="meter-wrap">
+        <span class="meter-label">Happiness</span>
+        <div class="meter-bar"><div class="meter-fill green" id="happy-bar"></div></div>
+      </div>
+      <div class="meter-wrap">
+        <span class="meter-label">Baby Activity</span>
+        <div class="meter-bar"><div class="meter-fill purple" id="baby-bar"></div></div>
+      </div>
+    </div>
+    <div id="actions">
+      <button class="action-btn" id="btn-pat" onclick="game.pat()">Pat Belly 🤲</button>
+      <button class="action-btn" id="btn-sing" onclick="game.sing()">Sing to Baby 🎵</button>
+      <button class="action-btn" id="btn-rest" onclick="game.rest()">Rest 😴</button>
+    </div>
+  </div>
+
+  <div id="log"></div>
+
+  <script src="pregnancy.js"></script>
+</body>
+</html>
