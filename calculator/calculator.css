@@ -1,62 +1,101 @@
-body{
-  background-color:black;
-  color:white;
-  font-family:Arial;
-}
-.calc-btn{
-  border-radius:50%;
-  height:75px;
-  width:75px;
-  font-size:30px;
-  font-weight:bold;
-  font-family:Arial;
-  margin-top:5px;
-  border:solid;
-  cursor:pointer;
-  border-color:white;
-  background-color:black;
-  color:white;
-}
-.calc-btn:hover{
-  opacity:0.8;
-  transition:opacity 0.15s;
-}
-.calc-btn:active{
-  opacity:0.6;
-  transition:opacity 0.15s;
-}
-.zero-btn{
-  margin-top:5px;
-  border-radius:50%;
-  height:75px;
-  width:75px;
-  font-size:30px;
-  font-weight:bold;
-  font-family:Arial;
-  border:solid;
-  cursor:pointer;
-  border-color:white;
-  background-color:black;
-  color:white;
-}
-.zero-btn:hover{
-  opacity:0.8;
-  transition:opacity 0.15s;
-}
-.zero-btn:active{
-  opacity:0.6;
-  transition:opacity 0.15s;
-}
-.calculator{
+@import url('../h3.css');
+
+body {
+  padding: 32px 16px 64px;
   text-align: center;
 }
-.equation{
-  text-align:center;
-  font-size:30px;
-  font-weight:bold;
+
+.title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--h3-blue-400), var(--h3-blue-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.result{
-  text-align:center;
-  font-size:30px;
-  font-weight:bold;
+
+.calculator {
+  display: inline-block;
+  text-align: center;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(16px);
+  border-radius: var(--radius-4);
+  border: 1px solid rgba(255,255,255,0.85);
+  box-shadow: var(--shadow-drop-lg);
+  padding: 24px;
+  margin: 0 auto;
+}
+
+.calc-btn,
+.zero-btn {
+  border-radius: 50%;
+  height: 72px;
+  width: 72px;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  margin: 4px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: var(--grad-deep);
+  color: #fff;
+  box-shadow: var(--shadow-drop), inset 0 1px 0 rgba(255,255,255,0.35);
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+  vertical-align: middle;
+}
+
+.calc-btn::after,
+.zero-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 55%);
+  pointer-events: none;
+}
+
+.calc-btn:hover,
+.zero-btn:hover {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: var(--shadow-drop-lg), inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+.calc-btn:active,
+.zero-btn:active {
+  transform: scale(0.94);
+  box-shadow: var(--shadow-drop);
+}
+
+/* Number buttons: lighter look */
+.calc-btn:nth-of-type(-n+12) {
+  background: rgba(255,255,255,0.85);
+  color: var(--h3-blue-600);
+  border: 2px solid rgba(0,116,224,0.2);
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* Operator buttons stay blue gradient (handled by default above) */
+/* The = button gets a special green accent */
+
+.equation {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--fg-2);
+  min-height: 36px;
+  margin-bottom: 4px;
+  letter-spacing: 0.01em;
+}
+
+.result {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--h3-blue-600);
+  min-height: 44px;
+  margin-top: 8px;
 }

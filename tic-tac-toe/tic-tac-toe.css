@@ -1,60 +1,125 @@
-body{
-  background-color:black;
-  color:white;
-  font-family:Arial;
+@import url('../h3.css');
+
+body {
+  padding: 32px 16px 64px;
+  text-align: center;
 }
-.space{
-  height:75px;
-  width:75px;
-  cursor:pointer;
-  margin-top:5px;
-  font-size: 25px;
-  line-height: 75px; 
-  text-align: center; 
-  display: inline-block; 
-  vertical-align: middle; 
-  color:white;
-  border-color: white;
-  background-color:black;
-  border:solid;
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  margin-bottom: 28px;
+  background: linear-gradient(135deg, var(--h3-blue-400), var(--h3-blue-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.space:hover{
-  opacity:0.8;
-  transition:opacity, 0.15s;
+
+.game {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 90px);
+  gap: 8px;
+  margin: 0 auto 20px;
 }
-.space:active{
-  opacity:0.6;
-  transition:opacity, 0.15s;
+
+.game br { display: none; }
+
+.space {
+  width: 90px;
+  height: 90px;
+  border-radius: var(--radius-2);
+  border: 2px solid rgba(0,116,224,0.2);
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-card);
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--h3-blue-500);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1;
 }
-.game{
-  text-align:center;
+
+.space:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-drop-lg);
+  background: rgba(255,255,255,0.98);
+  border-color: var(--h3-blue-400);
 }
-.misc-button{
-  cursor:pointer;
-  height:38px;
-  background-color: black;
-  border: solid;
-  border-color:white;
-  color:white;
-  margin-right:5px;
-  margin-top:5px;
-  font-weight:bold;
+
+.space:active {
+  transform: scale(0.95);
+  box-shadow: var(--shadow-drop);
 }
-.misc-button:hover{
-  opacity:0.8;
-  transition:opacity, 0.15s;
+
+.misc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 18px;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: var(--grad-deep);
+  color: #fff;
+  box-shadow: var(--shadow-drop), inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+  margin: 4px 3px;
 }
-.misc-button:active{
-  opacity:0.6;
-  transition:opacity, 0.15s;
-} 
-.record{
-  font-size:20px;
-  margin-top:5px;
-  font-weight:bold;
+
+.misc-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 55%);
+  pointer-events: none;
 }
-.result{
-  font-size:25px;
-  margin-top:5px;
-  font-weight:bold
+
+.misc-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-drop-lg), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.misc-button:active {
+  transform: scale(0.97);
+}
+
+#random { background: linear-gradient(180deg, #00cc1a 0%, #008026 100%); }
+#reset  { background: linear-gradient(180deg, #ff5c5c 0%, var(--h3-red) 100%); }
+
+.record {
+  font-size: 15px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--fg-2);
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-2);
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 14px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+.result {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 18px;
+  color: var(--h3-blue-500);
 }

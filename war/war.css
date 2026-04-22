@@ -1,35 +1,87 @@
-body{
-  color:white;
-  background-color:black;
-  font-family:Arial, Helvetica, sans-serif;
+@import url('../h3.css');
+
+body {
+  font-family: var(--font-body);
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background: radial-gradient(ellipse at center, #1ea831 0%, #0e6b1c 100%);
+  background-attachment: fixed;
+  color: #fff;
 }
 
-.result{
-  font-size:40px;
+h1 {
+  font-family: var(--font-display);
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  -webkit-text-fill-color: #fff;
+  margin-bottom: 12px;
 }
 
-.selector{
+.result {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.selector {
   text-align: center;
 }
 
-.player-count{
-  font-size:35px;
+.player-count {
+  font-family: var(--font-display);
+  font-size: 32px;
+  margin-bottom: 16px;
 }
 
 .flip-button,
-.player-selection{
-  height:38px;
-  cursor:pointer;
-  background-color:rgb(166, 40, 40);
-  border:solid;
-  border-color:white;
-  color:white;
-  font-weight:bold;
-  margin:top,bottom 5px;
-  transition:opacity, 0.15s;
+.player-selection {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 10px 22px;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: var(--grad-deep);
+  color: #fff;
+  box-shadow: var(--shadow-drop), inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+  margin: 4px 5px;
 }
 
-.player1{
+.flip-button::after,
+.player-selection::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 55%);
+  pointer-events: none;
+}
+
+.flip-button:hover,
+.player-selection:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-drop-lg), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.flip-button:active,
+.player-selection:active {
+  transform: scale(0.97);
+}
+
+.player1 {
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -40,7 +92,7 @@ body{
   z-index: 2;
 }
 
-.player2{
+.player2 {
   position: absolute;
   top: 20px;
   left: 50%;
@@ -79,20 +131,17 @@ body{
   height: 150px;
   max-width: 300px;
   z-index: 2;
-  
 }
 
 .player1 img,
 .player2 img,
 .player3 img,
 .player4 img,
-.player5 img{
-  height:100px;
-}
-.flip-button:hover{
-  opacity:0.8;
+.player5 img {
+  height: 100px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+  transition: transform var(--dur-med) var(--ease-bounce);
 }
 
-.flip-button:active{
-  opacity:0.6;
-}
+.flip-button:hover { opacity: 1; }
+.flip-button:active { opacity: 1; }
